@@ -1,0 +1,62 @@
+Pax Republica 2.0 - System Specification
+
+This document outlines the requirements and specifications for the Pax Republica 2.0 web application, a replacement for the existing PennMUSH system.
+
+1.  Technology Stack:
+    *   Backend: Laravel (PHP Framework)
+    *   Frontend: Blade Templates (with potential Alpine.js/Vue.js for interactivity)
+    *   Database: MySQL/MariaDB
+    *   Web Server: Apache
+
+2.  Core Requirements:
+    *   Account Registration & Management:
+        *   Email/password registration with anti-spam and email verification.
+        *   Account name (OOC handle) with 8 alphanumeric character limit.
+        *   Time zone selection.
+        *   Optional profile fields (real name, age, sex, blurb).
+        *   Admin and Player account types with differing permissions.
+    *   Character Creation & Management:
+        *   Character sheets based on game policies.
+        *   Tier system based on XP.
+        *   Archetypes.
+        *   Faction and rank selection.
+        *   Character status (INPROGRESS, PENDING, ACTIVE, INACTIVE).
+        *   Submission/approval workflow.
+    *   Scene System:
+        *   Scene creation with title, location, synopsis, plot ID, and participant list.
+        *   Posting and editing within scenes.
+        *   Dice rolling with modifiers.
+        *   Scene list with filtering and sorting.
+    *   Jobsys:
+        *   Ticketing system for admin support (applications, bug reports, feedback, etc.).
+        *   User and admin roles with differing permissions.
+    *   Factions:
+        *   Faction descriptions, ranks, and member lists.
+        *   Faction colors.
+        *   Admin and leader tools for managing factions.
+    *   Vehicles & NPCs:
+        *   Vehicle and NPC sheets attached to characters.
+        *   Admin tools for managing vehicle templates and mods.
+    *   Toolbar:
+        *   Dynamic toolbar with login/register buttons or account page/scene creation links.
+        *   Notifications for new messages, job activity, and scene activity.
+        *   Discord permalink.
+    *   Home Page:
+        *   Scene list widget.
+        *   Shortcut to character creation.
+    *   Admin Tools:
+        *   CRUD interfaces for managing skills, attributes, archetypes, races, factions, specializations, traits, vehicle templates, vehicle mods, and locations.
+        *   User moderation tools (deactivate, delete, edit accounts, site bans).
+        *   Job management tools (approve, reject, cancel jobs).
+
+3.  Data Management:
+    *   The new site will replace the existing wiki content, requiring admin tools to manage all game information (Factions, Races, Skills, etc.).
+
+4.  UI/UX:
+    *   Prioritize functionality over UI/UX for the initial development.
+
+5.  Deferred Features:
+    *   Deep Discord integration will be considered for a future phase.
+
+6.  PennMUSH Logic:
+    *   No specific PennMUSH logic needs exact replication beyond the requirements outlined in this document.

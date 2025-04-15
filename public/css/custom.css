@@ -1,0 +1,449 @@
+/* Modern UI Theme */.scene-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.description {
+    margin-bottom: 20px;
+}
+
+.expandable-description {
+    height: 100px;
+    overflow: hidden;
+    transition: height 0.3s ease;
+}
+
+.expandable-description.expanded {
+    height: auto;
+}
+:root {
+    --primary-gradient: linear-gradient(135deg, #9d4edd, #ff8c42);
+    --sidebar-width: 280px;
+    --navbar-height: 60px;
+}
+
+body {
+    background: #ffffff;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: var(--sidebar-width);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar-brand {
+    padding: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sidebar-nav {
+    padding: 1rem 0;
+}
+
+.nav-item {
+    padding: 0.5rem 1.5rem;
+}
+
+.nav-link {
+    color: #333;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    background: var(--primary-gradient);
+    color: white;
+}
+
+/* Main Content */
+.main-content {
+    margin-left: var(--sidebar-width);
+    padding: 2rem;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e0e0e0;
+    overflow: hidden;
+}
+
+.card-header {
+    background: var(--primary-gradient);
+    color: white;
+    border-bottom: none;
+    padding: 1rem 1.25rem;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebar.show {
+        transform: translateX(0);
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 1rem;
+        padding-bottom: 70px; /* Space for bottom navbar */
+    }
+
+    .bottom-navbar {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 0.75rem;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        justify-content: space-around;
+        z-index: 999;
+    }
+
+    .bottom-nav-item {
+        color: #333;
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 0.875rem;
+    }
+
+    .bottom-nav-item i {
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .bottom-nav-item.active {
+        color: #6a0dad;
+    }
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #6a0dad, #ff8c00);
+    border: none;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background: linear-gradient(45deg, #5a0c93, #e67e00);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(106, 13, 173, 0.15);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 6px rgba(106, 13, 173, 0.1);
+}
+
+.card-header h1{
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+/* Dark Mode Styles */
+html.dark-mode {
+    --dm-bg-primary: #1a1a1a; /* Dark background */
+    --dm-bg-secondary: #2c2c2c; /* Slightly lighter dark for cards/sidebar */
+    --dm-text-primary: #e0e0e0; /* Light grey text */
+    --dm-text-secondary: #b0b0b0; /* Dimmer text */
+    --dm-border-color: #555;
+    --dm-link-color: #ff8c42; /* Use one of the gradient colors for links */
+    --dm-link-hover-color: #ffa500; /* Lighter orange for hover */
+    --dm-sidebar-bg: rgba(44, 44, 44, 0.9); /* Dark sidebar with blur */
+    --dm-card-bg: #333333;
+    --dm-card-header-bg: linear-gradient(45deg, #5a0c93, #e67e00); /* Darker gradient for header */
+    --dm-card-header-text: #f0f0f0;
+    --dm-input-bg: #333;
+    --dm-input-border: #555;
+    --dm-input-text: #e0e0e0;
+
+    /* Override the basic invert filter */
+    filter: none !important; /* Remove the global filter */
+    background-color: var(--dm-bg-primary);
+    color: var(--dm-text-primary);
+}
+
+/* General element overrides */
+html.dark-mode body {
+    background-color: var(--dm-bg-primary);
+    color: var(--dm-text-primary);
+}
+
+html.dark-mode a {
+    color: var(--dm-link-color);
+}
+
+html.dark-mode a:hover {
+    color: var(--dm-link-hover-color);
+}
+
+/* Sidebar */
+html.dark-mode .sidebar {
+    background: var(--dm-sidebar-bg);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+html.dark-mode .sidebar-brand {
+    /* Keep the gradient text */
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+html.dark-mode .nav-link {
+    color: var(--dm-text-secondary);
+}
+
+html.dark-mode .nav-link:hover,
+html.dark-mode .nav-link.active {
+    background: var(--primary-gradient); /* Keep gradient for active/hover */
+    color: white;
+}
+
+html.dark-mode .theme-toggle {
+    color: var(--dm-text-secondary);
+}
+html.dark-mode .theme-toggle:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Content & Cards */
+html.dark-mode .main-content {
+    /* No specific change needed, inherits body background */
+}
+
+html.dark-mode .card {
+    background: var(--dm-card-bg);
+    border: 1px solid var(--dm-border-color);
+    color: var(--dm-text-primary);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+html.dark-mode .card-header {
+    background: var(--dm-card-header-bg);
+    color: var(--dm-card-header-text);
+}
+
+html.dark-mode .card-body,
+html.dark-mode .card-footer {
+    color: var(--dm-text-primary);
+}
+
+html.dark-mode .card-footer {
+     background-color: var(--dm-card-bg); /* Ensure footer matches card bg */
+     border-top: 1px solid var(--dm-border-color);
+}
+
+html.dark-mode .list-group-item {
+    background-color: var(--dm-card-bg);
+    border-color: var(--dm-border-color);
+    color: var(--dm-text-primary);
+}
+
+html.dark-mode .list-group-item a {
+    color: var(--dm-link-color);
+}
+
+html.dark-mode .table {
+    color: var(--dm-text-primary);
+    border-color: var(--dm-border-color);
+}
+
+html.dark-mode .table th,
+html.dark-mode .table td {
+    border-color: var(--dm-border-color);
+}
+
+html.dark-mode .table thead th {
+    border-color: var(--dm-border-color);
+    background-color: #444; /* Slightly darker for contrast */
+}
+
+html.dark-mode .table-hover > tbody > tr:hover > * {
+  --bs-table-accent-bg: rgba(255, 255, 255, 0.075); /* Subtle hover for dark tables */
+  color: var(--dm-text-primary);
+}
+
+html.dark-mode .badge.bg-warning {
+    background-color: #ffc107 !important; /* Keep warning color */
+    color: #333 !important; /* Ensure text is readable */
+}
+html.dark-mode .badge.bg-info {
+    background-color: #0dcaf0 !important;
+    color: #333 !important;
+}
+html.dark-mode .badge.bg-success {
+    background-color: #198754 !important;
+    color: white !important;
+}
+html.dark-mode .badge.bg-secondary {
+    background-color: #6c757d !important;
+    color: white !important;
+}
+html.dark-mode .badge.bg-danger {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+
+/* Forms */
+html.dark-mode .form-control,
+html.dark-mode .form-select {
+    background-color: var(--dm-input-bg);
+    border-color: var(--dm-input-border);
+    color: var(--dm-input-text);
+}
+
+html.dark-mode .form-control:focus,
+html.dark-mode .form-select:focus {
+    background-color: var(--dm-input-bg);
+    border-color: var(--dm-link-color);
+    color: var(--dm-input-text);
+    box-shadow: 0 0 0 0.25rem rgba(255, 140, 66, 0.25); /* Use link color for focus shadow */
+}
+
+html.dark-mode .form-control::placeholder {
+    color: var(--dm-text-secondary);
+}
+
+html.dark-mode .input-group-text {
+    background-color: var(--dm-input-bg);
+    border-color: var(--dm-input-border);
+    color: var(--dm-text-secondary);
+}
+
+/* Buttons */
+html.dark-mode .btn-outline-secondary {
+    color: var(--dm-text-secondary);
+    border-color: var(--dm-text-secondary);
+}
+html.dark-mode .btn-outline-secondary:hover {
+    color: var(--dm-text-primary);
+    background-color: var(--dm-text-secondary);
+    border-color: var(--dm-text-secondary);
+}
+html.dark-mode .btn-outline-primary {
+    color: var(--dm-link-color);
+    border-color: var(--dm-link-color);
+}
+html.dark-mode .btn-outline-primary:hover {
+    color: white;
+    background-color: var(--dm-link-color);
+    border-color: var(--dm-link-color);
+}
+
+/* Footer */
+html.dark-mode footer.bg-light {
+    background-color: var(--dm-bg-secondary) !important; /* Override Bootstrap's !important */
+    border-top: 1px solid var(--dm-border-color);
+}
+
+html.dark-mode footer .text-muted {
+    color: var(--dm-text-secondary) !important;
+}
+
+/* Mobile Bottom Navbar */
+html.dark-mode .bottom-navbar {
+    background: var(--dm-sidebar-bg); /* Match sidebar */
+    box-shadow: 0 -2px 10px rgba(255, 255, 255, 0.05);
+}
+
+html.dark-mode .bottom-nav-item {
+    color: var(--dm-text-secondary);
+}
+
+html.dark-mode .bottom-nav-item.active {
+    color: var(--dm-link-color); /* Use link color for active */
+}
+
+/* Remove inversion from images and elements that shouldn't be inverted */
+html.dark-mode img,
+html.dark-mode video,
+html.dark-mode iframe,
+html.dark-mode .no-invert {
+    filter: none !important; /* Ensure no filter is applied */
+}
+
+/* Theme Toggle Button */
+.theme-toggle-button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    transition: color 0.3s ease;
+}
+
+.theme-toggle-button .bi-sun-fill {
+    display: none;
+}
+
+html.dark-mode .theme-toggle-button {
+    color: #fff; /* White color in dark mode */
+}
+
+html.dark-mode .theme-toggle-button .bi-moon-stars-fill {
+    display: none;
+}
+
+html.dark-mode .theme-toggle-button .bi-sun-fill {
+    display: inline-block;
+}
+
+html.dark-mode body {
+    background-color: var(--dm-bg-primary);
+    color: var(--dm-text-primary);
+}
+
+html.dark-mode .card {
+    background-color: var(--dm-card-bg);
+    color: var(--dm-text-primary);
+}
+
+html.dark-mode .card-header {
+    background: var(--dm-card-header-bg);
+    color: var(--dm-card-header-text);
+}
+
+html.dark-mode .card-body {
+    background-color: var(--dm-card-bg);
+}
